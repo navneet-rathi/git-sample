@@ -4,8 +4,8 @@
   tasks:
     - name: Print the playbook directory
       ansible.builtin.shell:
-        shell: git clone https://github.com/navneet-rathi/git-sample.git 
-        agrs:
+        shell: "git clone https://github.com/navneet-rathi/git-sample.git"
+        args:
           chdir: /tmp
 
     - name: Start the application
