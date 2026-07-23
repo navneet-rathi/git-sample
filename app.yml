@@ -25,7 +25,7 @@
         chdir: "{{ repo_dir }}"
       register: start_output
       become_user: nrathi
-      
+
     - name: Display the output of start.sh
       ansible.builtin.debug:
         msg: "{{ start_output.stdout }}"
