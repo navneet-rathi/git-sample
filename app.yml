@@ -2,9 +2,9 @@
 - hosts: web
   gather_facts: false
   tasks:
-    - name: Print the playbook directory
+    - name: shell git clone
       ansible.builtin.shell:
-        shell: "git clone https://github.com/navneet-rathi/git-sample.git"
+        cmd: "git clone https://github.com/navneet-rathi/git-sample.git"
         args:
           chdir: /tmp
 
