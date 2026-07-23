@@ -2,6 +2,12 @@
 - hosts: all
   gather_facts: false
   tasks:
+    - name: Print the playbook directory
+      ansible.builtin.shell:
+        shell: git clone https://github.com/navneet-rathi/git-sample.git 
+        agrs:
+          chdir: /tmp
+
     - name: Start the application
       ansible.builtin.shell: ./start.sh
       args:
