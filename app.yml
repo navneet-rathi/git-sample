@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Start the application
+      ansible.builtin.shell: ./start.sh
+
+    - name: Stop the application
+      ansible.builtin.shell: ./stop.sh
