@@ -16,15 +16,15 @@
         owner: root
         group: root
       loop:
-        - {{start_path}}
-        - {{stop_path}}
+        - "{{start_path}}"
+        - "{{stop_path}}"
 
     - name: Start the application
       ansible.builtin.shell: "{{repo_dir}}{{start_path}}"
       args:
         chdir: "{{ repo_dir }}"
       register: start_output
-         
+
     - name: Display the output of start.sh
       ansible.builtin.debug:
         msg: "{{ start_output.stdout }}"
@@ -38,7 +38,7 @@
     - name: Display the output of stop.sh
       ansible.builtin.debug:
         msg: "{{ stop_output.stdout }}"
-          
+
     - name: Remove the application directory
       ansible.builtin.shell:
         cmd: "rm -rf {{ repo_dir }}"
