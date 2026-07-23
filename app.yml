@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: web
   gather_facts: false
   tasks:
     - name: Print the playbook directory
