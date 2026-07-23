@@ -11,7 +11,7 @@
 
     - name: Change permission of start.sh
       ansible.builtin.file:
-        path: "{{ repo_dir }}/{{item}}.sh"
+        path: "{{ repo_dir }}{{item}}.sh"
         mode: '0755'
         owner: root
         group: root
