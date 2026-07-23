@@ -5,24 +5,24 @@
   tasks:
     - name: shell git clone
       ansible.builtin.shell:
-        cmd: "git clone https://github.com/navneet-rathi/git-sample.git"
+        cmd: "git clone {{git_repo}} {{repo_dir}}"
       args:
         chdir: /tmp
 
     - name: Change permission of start.sh
       ansible.builtin.file:
-        path: "{{ exercise_dir }}/{{item}}.sh"
+        path: "{{ repo_dir }}/{{item}}.sh"
         mode: '0755'
         owner: root
         group: root
       loop:
-        - start
-        - stop
+        - {{start_path}}
+        - {{stop_path}}
 
     - name: Start the application
-      ansible.builtin.shell: ./start.sh
+      ansible.builtin.shell: "{{repo_dir}}{{start_path}}"
       args:
-        chdir: "{{ exercise_dir }}"
+        chdir: "{{ repo_dir }}"
       register: start_output
          
     - name: Display the output of start.sh
@@ -30,9 +30,9 @@
         msg: "{{ start_output.stdout }}"
 
     - name: Stop the application
-      ansible.builtin.shell: ./stop.sh
+      ansible.builtin.shell: "{{repo_dir}}{{stop_path}}"
       args:
-        chdir: "{{ exercise_dir }}"
+        chdir: "{{ repo_dir }}"
       register: stop_output
 
     - name: Display the output of stop.sh
@@ -41,4 +41,4 @@
           
     - name: Remove the application directory
       ansible.builtin.shell:
-        cmd: "rm -rf {{ exercise_dir }}"
+        cmd: "rm -rf {{ repo_dir }}"
