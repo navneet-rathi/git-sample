@@ -11,9 +11,9 @@
     - name: Start the application
       ansible.builtin.shell: ./start.sh
       args:
-        chdir: {{ playbook_dir }}
+        chdir: "{{ playbook_dir }}"
 
     - name: Stop the application
       ansible.builtin.shell: ./stop.sh
       args:
-        chdir: {{ playbook_dir }}
+        chdir: "{{ playbook_dir }}"
