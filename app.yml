@@ -1,6 +1,7 @@
 ---
 - hosts: web
   gather_facts: false
+  become: true
   tasks:
     - name: shell git clone
       ansible.builtin.shell:
