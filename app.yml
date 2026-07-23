@@ -23,12 +23,22 @@
       ansible.builtin.shell: ./start.sh
       args:
         chdir: "{{ exercise_dir }}"
+      register: start_output
+         
+    - name: Display the output of start.sh
+      ansible.builtin.debug:
+        msg: "{{ start_output.stdout }}"
 
     - name: Stop the application
       ansible.builtin.shell: ./stop.sh
       args:
         chdir: "{{ exercise_dir }}"
+      register: stop_output
 
+    - name: Display the output of stop.sh
+      ansible.builtin.debug:
+        msg: "{{ stop_output.stdout }}"
+          
     - name: Remove the application directory
       ansible.builtin.shell:
         cmd: "rm -rf {{ exercise_dir }}"
