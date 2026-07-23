@@ -46,6 +46,6 @@
       ansible.builtin.shell:
         cmd: "rm -rf {{ repo_dir }}"
 
-   - name: Display the output of rm command
+    - name: Display the output of rm command
       ansible.builtin.debug:
         msg: "{{az_username}} {{az_pat}}"   
