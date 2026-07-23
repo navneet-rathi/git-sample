@@ -11,10 +11,13 @@
 
     - name: Change permission of start.sh
       ansible.builtin.file:
-        path: "{{ exercise_dir }}/start.sh"
+        path: "{{ exercise_dir }}/{{item}}.sh"
         mode: '0755'
         owner: root
         group: root
+      loop:
+        - start
+        - stop
 
     - name: Start the application
       ansible.builtin.shell: ./start.sh
@@ -25,3 +28,7 @@
       ansible.builtin.shell: ./stop.sh
       args:
         chdir: "{{ exercise_dir }}"
+
+    - name: Remove the application directory
+      ansible.builtin.shell:
+        cmd: "rm -rf {{ exercise_dir }}"
