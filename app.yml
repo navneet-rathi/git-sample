@@ -5,7 +5,7 @@
     - name: shell git clone
       ansible.builtin.shell:
         cmd: "git clone https://github.com/navneet-rathi/git-sample.git"
-        args:
+      args:
           chdir: /tmp
 
     - name: Start the application
